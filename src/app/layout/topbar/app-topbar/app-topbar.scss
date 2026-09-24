@@ -1,0 +1,99 @@
+:host {
+    display: block;
+}
+
+.topbar {
+    height: 4rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 1.5rem;
+
+    background: var(--p-surface-0);
+
+    border-bottom: 1px solid var(--p-surface-200);
+
+    box-sizing: border-box;
+}
+
+.topbar-left,
+.topbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+
+    gap: 0.75rem;
+}
+
+.brand-icon {
+    width: 2.25rem;
+    height: 2.25rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 0.6rem;
+
+    background: var(--p-primary-color);
+    color: var(--p-primary-contrast-color);
+}
+
+.brand-icon i {
+    font-size: 1rem;
+}
+
+.brand-name {
+    font-size: 1.15rem;
+    font-weight: 600;
+
+    letter-spacing: -0.02em;
+}
+
+.topbar-right {
+    gap: 0.5rem;
+}
+
+.topbar-button {
+    width: 2.5rem;
+    height: 2.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+    border-radius: 0.5rem;
+
+    background: transparent;
+
+    color: var(--p-text-color);
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.15s ease,
+        color 0.15s ease;
+}
+
+.topbar-button:hover {
+    background: var(--p-surface-100);
+}
+
+.user-button {
+    width: auto;
+
+    gap: 0.5rem;
+
+    padding: 0 0.75rem;
+}
+
+.user-name {
+    font-size: 0.9rem;
+}

@@ -1,0 +1,39 @@
+:host {
+    display: block;
+    height: 100vh;
+}
+
+.app-shell {
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background: var(--p-surface-50);
+
+    color: var(--p-text-color);
+
+    overflow: hidden;
+}
+
+.app-body {
+    flex: 1;
+
+    display: flex;
+
+    min-height: 0;
+}
+
+app-sidebar {
+    flex-shrink: 0;
+    height: 100%;
+}
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+
+    padding: 2rem;
+
+    overflow: auto;
+}

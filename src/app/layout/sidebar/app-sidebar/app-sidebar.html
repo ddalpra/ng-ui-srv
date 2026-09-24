@@ -1,0 +1,78 @@
+<aside class="sidebar">
+
+    <nav class="menu">
+
+        <div class="menu-section">
+
+            <div class="menu-section-title">
+                GENERALE
+            </div>
+
+            <a
+    class="menu-item"
+    routerLink="/dashboard"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }">
+
+    <i class="pi pi-home"></i>
+    <span>Dashboard</span>
+
+</a>
+
+            <a
+                class="menu-item"
+                routerLink="/appointments"
+                routerLinkActive="active">
+
+                <i class="pi pi-calendar"></i>
+                <span>Appuntamenti</span>
+
+            </a>
+
+            <a
+                class="menu-item"
+                routerLink="/customers"
+                routerLinkActive="active">
+
+                <i class="pi pi-users"></i>
+                <span>Clienti</span>
+
+            </a>
+
+        </div>
+
+
+        <div class="menu-section">
+
+            <div class="menu-section-title">
+                SISTEMA
+            </div>
+
+            <a
+                class="menu-item"
+                routerLink="/settings"
+                routerLinkActive="active">
+
+                <i class="pi pi-cog"></i>
+                <span>Impostazioni</span>
+
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <div class="sidebar-footer">
+
+        <div class="version">
+            Hubrix UI
+        </div>
+
+        <div class="version-number">
+            v0.1.0
+        </div>
+
+    </div>
+
+</aside>
