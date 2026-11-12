@@ -8,36 +8,23 @@
                 GENERALE
             </div>
 
-            <a
-    class="menu-item"
-    routerLink="/dashboard"
-    routerLinkActive="active"
-    [routerLinkActiveOptions]="{ exact: true }">
+            @for (item of generalItems; track item.label) {
 
-    <i class="pi pi-home"></i>
-    <span>Dashboard</span>
+                <a
+                    class="menu-item"
+                    [routerLink]="item.route"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }">
 
-</a>
+                    <i [class]="'pi ' + item.icon"></i>
 
-            <a
-                class="menu-item"
-                routerLink="/appointments"
-                routerLinkActive="active">
+                    <span>
+                        {{ item.label }}
+                    </span>
 
-                <i class="pi pi-calendar"></i>
-                <span>Appuntamenti</span>
+                </a>
 
-            </a>
-
-            <a
-                class="menu-item"
-                routerLink="/customers"
-                routerLinkActive="active">
-
-                <i class="pi pi-users"></i>
-                <span>Clienti</span>
-
-            </a>
+            }
 
         </div>
 
@@ -48,15 +35,23 @@
                 SISTEMA
             </div>
 
-            <a
-                class="menu-item"
-                routerLink="/settings"
-                routerLinkActive="active">
+            @for (item of systemItems; track item.label) {
 
-                <i class="pi pi-cog"></i>
-                <span>Impostazioni</span>
+                <a
+                    class="menu-item"
+                    [routerLink]="item.route"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }">
 
-            </a>
+                    <i [class]="'pi ' + item.icon"></i>
+
+                    <span>
+                        {{ item.label }}
+                    </span>
+
+                </a>
+
+            }
 
         </div>
 

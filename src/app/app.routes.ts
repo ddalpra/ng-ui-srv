@@ -1,10 +1,5 @@
 import { Routes } from '@angular/router';
 
-import { Dashboard } from './pages/dashboard/dashboard';
-import { Appointments } from './pages/appointments/appointments';
-import { Customers } from './pages/customers/customers';
-import { Settings } from './pages/settings/settings';
-
 export const routes: Routes = [
     {
         path: '',
@@ -13,19 +8,27 @@ export const routes: Routes = [
     },
     {
         path: 'dashboard',
-        component: Dashboard
+        loadComponent: () =>
+            import('./features/dashboard/pages/dashboard')
+                .then(m => m.Dashboard)
     },
     {
         path: 'appointments',
-        component: Appointments
+        loadComponent: () =>
+            import('./features/appointments/pages/appointments')
+                .then(m => m.Appointments)
     },
     {
         path: 'customers',
-        component: Customers
+        loadComponent: () =>
+            import('./features/customers/pages/customers')
+                .then(m => m.Customers)
     },
     {
         path: 'settings',
-        component: Settings
+        loadComponent: () =>
+            import('./features/settings/pages/settings')
+                .then(m => m.Settings)
     },
     {
         path: '**',
