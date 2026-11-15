@@ -1,0 +1,88 @@
+<p-table
+    #dt
+    [value]="data()"
+    [paginator]="true"
+    [rows]="rows()"
+    [rowsPerPageOptions]="[5, 10, 25, 50]"
+    [globalFilterFields]="globalFilterFields"
+    [rowHover]="true"
+    [showGridlines]="false"
+    dataKey="id">
+
+    <ng-template #caption>
+        <div class="table-toolbar">
+            <div class="search-box">
+                <i class="pi pi-search"></i>
+                <input
+                    pInputText
+                    type="text"
+                    placeholder="Cerca..."
+                    (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+                />
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template #header>
+        <tr>
+            @for (column of columns(); track column.field) {
+                <th
+                    [pSortableColumn]="column.sortable === false ? undefined : column.field">
+                    {{ column.header }}
+
+                </th>
+            }
+
+            @if (showEdit() || showDelete()) {
+                <th class="actions-column">Azioni</th>
+            }
+        </tr>
+    </ng-template>
+
+    <ng-template #body let-row>
+        <tr>
+            @for (column of columns(); track column.field) {
+                <td>{{ getCellValue(row, column.field) }}</td>
+            }
+
+            @if (showEdit() || showDelete()) {
+                <td class="actions-column">
+
+                    @if (showEdit()) {
+                        <p-button
+                            icon="pi pi-pencil"
+                            severity="info"
+                            [text]="true"
+                            [rounded]="true"
+                            ariaLabel="Modifica"
+                            (onClick)="edit.emit(row)"
+                        />
+                    }
+
+                    @if (showDelete()) {
+                        <p-button
+                            icon="pi pi-trash"
+                            severity="danger"
+                            [text]="true"
+                            [rounded]="true"
+                            ariaLabel="Elimina"
+                            (onClick)="delete.emit(row)"
+                        />
+                    }
+
+                </td>
+            }
+        </tr>
+    </ng-template>
+
+    <ng-template #emptymessage>
+        <tr>
+            <td
+                [attr.colspan]="columns().length + (showEdit() || showDelete() ? 1 : 0)"
+                class="empty-message">
+                {{ emptyMessage() }}
+            </td>
+        </tr>
+    </ng-template>
+
+</p-table>

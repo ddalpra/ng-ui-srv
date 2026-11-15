@@ -1,3 +1,4 @@
+
 <app-page-header
     title="Appuntamenti"
     description="Gestione degli appuntamenti">
@@ -12,8 +13,76 @@
 </app-page-header>
 
 <div class="content-card">
-    <h2>Appuntamenti</h2>
-    <p>
-        Qui gestiremo gli appuntamenti.
-    </p>
+
+    <div class="table-header">
+        <div>
+            <h2>Elenco appuntamenti</h2>
+            <p>Appuntamenti registrati: {{ appuntamenti.length }}</p>
+        </div>
+    </div>
+
+    <app-data-table
+    [columns]="colonne"
+    [data]="appuntamenti"
+    [rows]="10"
+    [showEdit]="false"
+    [showDelete]="true"
+    emptyMessage="Nessun appuntamento presente."
+    (delete)="eliminaAppuntamento($event.id)"
+/>
+
 </div>
+
+<app-form-dialog
+    title="Nuovo appuntamento"
+    [visible]="dialogVisibile"
+    width="600px"
+    saveLabel="Salva appuntamento"
+    (visibleChange)="dialogVisibile = $event"
+    (save)="salvaAppuntamento()"
+    (cancel)="annulla()"
+>
+    <form [formGroup]="appuntamentoForm" class="appointment-form">
+
+        <div class="form-field">
+            <label for="cliente">Cliente</label>
+            <input
+                id="cliente"
+                pInputText
+                formControlName="cliente"
+                placeholder="Nome cliente"
+            />
+        </div>
+
+        <div class="form-field">
+            <label for="data">Data</label>
+            <input
+                id="data"
+                type="date"
+                pInputText
+                formControlName="data"
+            />
+        </div>
+
+        <div class="form-field">
+            <label for="ora">Ora</label>
+            <input
+                id="ora"
+                type="time"
+                pInputText
+                formControlName="ora"
+            />
+        </div>
+
+        <div class="form-field">
+            <label for="descrizione">Descrizione</label>
+            <input
+                id="descrizione"
+                pInputText
+                formControlName="descrizione"
+                placeholder="Descrizione appuntamento"
+            />
+        </div>
+
+    </form>
+</app-form-dialog>

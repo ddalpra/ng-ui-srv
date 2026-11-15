@@ -1,23 +1,88 @@
-<div class="page-header">
 
-    <div>
-        <h1>Impostazioni</h1>
+<app-page-header
+    title="Impostazioni"
+    description="Gestione dei parametri di configurazione di Hubrix">
 
-        <p>
-            Configurazione di Hubrix
-        </p>
+    <div pageHeaderActions>
+        <p-button
+            label="Nuova impostazione"
+            icon="pi pi-plus"
+            (onClick)="nuovaImpostazione()"
+        />
     </div>
 
-</div>
+</app-page-header>
 
 <div class="content-card">
 
-    <h2>
-        Impostazioni
-    </h2>
-
-    <p>
-        Qui gestiremo le impostazioni del sistema.
-    </p>
+    <app-data-table
+        [columns]="colonne"
+        [data]="impostazioni"
+        [rows]="10"
+        [showEdit]="true"
+        [showDelete]="true"
+        emptyMessage="Nessuna impostazione presente."
+        (edit)="modificaImpostazione($event)"
+        (delete)="eliminaImpostazione($event)"
+    />
 
 </div>
+
+<app-form-dialog
+    [title]="modalitaModifica ? 'Modifica impostazione' : 'Nuova impostazione'"
+    [visible]="dialogVisibile"
+    width="650px"
+    saveLabel="Salva"
+    (visibleChange)="dialogVisibile = $event"
+    (save)="salvaImpostazione()"
+    (cancel)="annulla()">
+
+    <form [formGroup]="impostazioneForm" class="settings-form">
+
+        <div class="form-field">
+            <label for="codice">Codice</label>
+            <input
+                id="codice"
+                pInputText
+                formControlName="codice"
+                placeholder="Es. APP_NAME"
+            />
+        </div>
+
+        <div class="form-field">
+            <label for="descrizione">Descrizione</label>
+            <input
+                id="descrizione"
+                pInputText
+                formControlName="descrizione"
+                placeholder="Descrizione impostazione"
+            />
+        </div>
+
+        <div class="form-field">
+            <label for="valore">Valore</label>
+            <input
+                id="valore"
+                pInputText
+                formControlName="valore"
+                placeholder="Valore impostazione"
+            />
+        </div>
+
+        <div class="form-field">
+            <label for="categoria">Categoria</label>
+            <p-select
+                inputId="categoria"
+                formControlName="categoria"
+                [options]="categorie"
+                optionLabel="label"
+                optionValue="value"
+                placeholder="Seleziona categoria"
+                appendTo="body"
+                styleClass="w-full"
+            />
+        </div>
+
+    </form>
+
+</app-form-dialog>

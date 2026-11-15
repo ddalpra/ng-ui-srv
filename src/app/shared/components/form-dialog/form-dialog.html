@@ -1,0 +1,33 @@
+<p-dialog
+    [header]="title()"
+    [visible]="visible()"
+    (visibleChange)="visibleChange.emit($event)"
+    [modal]="true"
+    [style]="{ width: width() }"
+    [breakpoints]="{
+        '960px': '75vw',
+        '640px': '95vw'
+    }"
+>
+    <div class="form-dialog-content">
+        <ng-content />
+    </div>
+
+    <ng-template #footer>
+        <div class="dialog-actions">
+
+            <p-button
+                [label]="cancelLabel()"
+                severity="secondary"
+                [outlined]="true"
+                (onClick)="cancel.emit()"
+            />
+
+            <p-button
+                [label]="saveLabel()"
+                (onClick)="save.emit()"
+            />
+
+        </div>
+    </ng-template>
+</p-dialog>

@@ -1,0 +1,42 @@
+
+.table-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0.5rem;
+}
+
+.search-box {
+    position: relative;
+    width: 280px;
+
+    i {
+        position: absolute;
+        left: 0.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-color-secondary);
+    }
+
+    input {
+        width: 100%;
+        padding-left: 2.25rem;
+    }
+}
+
+.actions-column {
+    width: 110px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.empty-message {
+    text-align: center;
+    padding: 2rem !important;
+    color: var(--text-color-secondary);
+}
+
+@media (max-width: 640px) {
+    .search-box {
+        width: 100%;
+    }
+}
